@@ -1,0 +1,19 @@
+function debounce(fun, time) {
+  let timer
+  return function() {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      fun()
+    }, time)
+  }
+}
+
+const submitForm = () => {
+  console.log('submit')
+}
+
+const submit = debounce(submitForm)
+
+submit()
+submit()
+setTimeout(() => submit(), 2000)
