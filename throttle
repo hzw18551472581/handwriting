@@ -1,0 +1,19 @@
+function throttle (fun, time) {
+  let t1 = 0
+  return function () {
+    let t2 = new Date().getTime()
+    if(t2 - t1 > time) {
+      fun()
+      t1 = t2
+    }
+  }
+}
+
+const submitForm = () => console.log('submit')
+const submit = throttle(submitForm, 500)
+
+submit()
+submit()
+setTimeout(() => submit(), 300)
+setTimeout(() => submit(), 600)
+setTimeout(() => submit(), 1000)
