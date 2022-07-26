@@ -1,0 +1,20 @@
+function g1(x) {
+  return x+1
+}
+function g2(x) {
+  return x+2
+}
+function g3(x) {
+  return x+3
+}
+
+function compose(...fns) {
+  return function(x) {
+    return fns.reduce((arg, fn) => {
+      return fn(arg)
+    },x)
+  }
+}
+
+const finalFun = compose(g1, g2, g3)
+console.log(finalFun(1))
